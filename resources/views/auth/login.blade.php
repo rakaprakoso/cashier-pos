@@ -1,4 +1,4 @@
-@extends('layouts.auth2')
+@extends('layouts.auth')
 @section('title', __('lang_v1.login'))
 
 @section('content')
