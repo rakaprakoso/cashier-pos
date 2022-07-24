@@ -47,61 +47,61 @@ class AdminSidebarMenu
                                 ['icon' => 'fa fas fa-briefcase', 'active' => request()->segment(1) == 'roles']
                             );
                         }
-                        if (auth()->user()->can('user.create')) {
-                            $sub->url(
-                                action('SalesCommissionAgentController@index'),
-                                __('lang_v1.sales_commission_agents'),
-                                ['icon' => 'fa fas fa-handshake', 'active' => request()->segment(1) == 'sales-commission-agents']
-                            );
-                        }
+                        // if (auth()->user()->can('user.create')) {
+                        //     $sub->url(
+                        //         action('SalesCommissionAgentController@index'),
+                        //         __('lang_v1.sales_commission_agents'),
+                        //         ['icon' => 'fa fas fa-handshake', 'active' => request()->segment(1) == 'sales-commission-agents']
+                        //     );
+                        // }
                     },
                     ['icon' => 'fa fas fa-users']
                 )->order(10);
             }
 
             //Contacts dropdown
-            if (auth()->user()->can('supplier.view') || auth()->user()->can('customer.view')) {
-                $menu->dropdown(
-                    __('contact.contacts'),
-                    function ($sub) {
-                        if (auth()->user()->can('supplier.view')) {
-                            $sub->url(
-                                action('ContactController@index', ['type' => 'supplier']),
-                                __('report.supplier'),
-                                ['icon' => 'fa fas fa-star', 'active' => request()->input('type') == 'supplier']
-                            );
-                        }
-                        if (auth()->user()->can('customer.view')) {
-                            $sub->url(
-                                action('ContactController@index', ['type' => 'customer']),
-                                __('report.customer'),
-                                ['icon' => 'fa fas fa-star', 'active' => request()->input('type') == 'customer']
-                            );
-                            $sub->url(
-                                action('CustomerGroupController@index'),
-                                __('lang_v1.customer_groups'),
-                                ['icon' => 'fa fas fa-users', 'active' => request()->segment(1) == 'customer-group']
-                            );
-                        }
-                        if (auth()->user()->can('supplier.create') || auth()->user()->can('customer.create')) {
-                            $sub->url(
-                                action('ContactController@getImportContacts'),
-                                __('lang_v1.import_contacts'),
-                                ['icon' => 'fa fas fa-download', 'active' => request()->segment(1) == 'contacts' && request()->segment(2) == 'import']
-                            );
-                        }
+            // if (auth()->user()->can('supplier.view') || auth()->user()->can('customer.view')) {
+            //     $menu->dropdown(
+            //         __('contact.contacts'),
+            //         function ($sub) {
+            //             if (auth()->user()->can('supplier.view')) {
+            //                 $sub->url(
+            //                     action('ContactController@index', ['type' => 'supplier']),
+            //                     __('report.supplier'),
+            //                     ['icon' => 'fa fas fa-star', 'active' => request()->input('type') == 'supplier']
+            //                 );
+            //             }
+            //             if (auth()->user()->can('customer.view')) {
+            //                 $sub->url(
+            //                     action('ContactController@index', ['type' => 'customer']),
+            //                     __('report.customer'),
+            //                     ['icon' => 'fa fas fa-star', 'active' => request()->input('type') == 'customer']
+            //                 );
+            //                 $sub->url(
+            //                     action('CustomerGroupController@index'),
+            //                     __('lang_v1.customer_groups'),
+            //                     ['icon' => 'fa fas fa-users', 'active' => request()->segment(1) == 'customer-group']
+            //                 );
+            //             }
+            //             if (auth()->user()->can('supplier.create') || auth()->user()->can('customer.create')) {
+            //                 $sub->url(
+            //                     action('ContactController@getImportContacts'),
+            //                     __('lang_v1.import_contacts'),
+            //                     ['icon' => 'fa fas fa-download', 'active' => request()->segment(1) == 'contacts' && request()->segment(2) == 'import']
+            //                 );
+            //             }
 
-                        if(!empty(env('GOOGLE_MAP_API_KEY'))) {
-                            $sub->url(
-                                action('ContactController@contactMap'),
-                                __('lang_v1.map'),
-                                ['icon' => 'fa fas fa-map-marker-alt', 'active' => request()->segment(1) == 'contacts' && request()->segment(2) == 'map']
-                            );
-                        }
-                    },
-                    ['icon' => 'fa fas fa-address-book', 'id' => "tour_step4"]
-                )->order(15);
-            }
+            //             if(!empty(env('GOOGLE_MAP_API_KEY'))) {
+            //                 $sub->url(
+            //                     action('ContactController@contactMap'),
+            //                     __('lang_v1.map'),
+            //                     ['icon' => 'fa fas fa-map-marker-alt', 'active' => request()->segment(1) == 'contacts' && request()->segment(2) == 'map']
+            //                 );
+            //             }
+            //         },
+            //         ['icon' => 'fa fas fa-address-book', 'id' => "tour_step4"]
+            //     )->order(15);
+            // }
 
             //Products dropdown
             if (auth()->user()->can('product.view') || auth()->user()->can('product.create') ||
@@ -125,25 +125,25 @@ class AdminSidebarMenu
                                 ['icon' => 'fa fas fa-plus-circle', 'active' => request()->segment(1) == 'products' && request()->segment(2) == 'create']
                             );
                         }
-                        if (auth()->user()->can('product.view')) {
-                            $sub->url(
-                                action('LabelsController@show'),
-                                __('barcode.print_labels'),
-                                ['icon' => 'fa fas fa-barcode', 'active' => request()->segment(1) == 'labels' && request()->segment(2) == 'show']
-                            );
-                        }
-                        if (auth()->user()->can('product.create')) {
-                            $sub->url(
-                                action('VariationTemplateController@index'),
-                                __('product.variations'),
-                                ['icon' => 'fa fas fa-circle', 'active' => request()->segment(1) == 'variation-templates']
-                            );
-                            $sub->url(
-                                action('ImportProductsController@index'),
-                                __('product.import_products'),
-                                ['icon' => 'fa fas fa-download', 'active' => request()->segment(1) == 'import-products']
-                            );
-                        }
+                        // if (auth()->user()->can('product.view')) {
+                        //     $sub->url(
+                        //         action('LabelsController@show'),
+                        //         __('barcode.print_labels'),
+                        //         ['icon' => 'fa fas fa-barcode', 'active' => request()->segment(1) == 'labels' && request()->segment(2) == 'show']
+                        //     );
+                        // }
+                        // if (auth()->user()->can('product.create')) {
+                        //     $sub->url(
+                        //         action('VariationTemplateController@index'),
+                        //         __('product.variations'),
+                        //         ['icon' => 'fa fas fa-circle', 'active' => request()->segment(1) == 'variation-templates']
+                        //     );
+                        //     $sub->url(
+                        //         action('ImportProductsController@index'),
+                        //         __('product.import_products'),
+                        //         ['icon' => 'fa fas fa-download', 'active' => request()->segment(1) == 'import-products']
+                        //     );
+                        // }
                         if (auth()->user()->can('product.opening_stock')) {
                             $sub->url(
                                 action('ImportOpeningStockController@index'),
@@ -151,13 +151,13 @@ class AdminSidebarMenu
                                 ['icon' => 'fa fas fa-download', 'active' => request()->segment(1) == 'import-opening-stock']
                             );
                         }
-                        if (auth()->user()->can('product.create')) {
-                            $sub->url(
-                                action('SellingPriceGroupController@index'),
-                                __('lang_v1.selling_price_group'),
-                                ['icon' => 'fa fas fa-circle', 'active' => request()->segment(1) == 'selling-price-group']
-                            );
-                        }
+                        // if (auth()->user()->can('product.create')) {
+                        //     $sub->url(
+                        //         action('SellingPriceGroupController@index'),
+                        //         __('lang_v1.selling_price_group'),
+                        //         ['icon' => 'fa fas fa-circle', 'active' => request()->segment(1) == 'selling-price-group']
+                        //     );
+                        // }
                         if (auth()->user()->can('unit.view') || auth()->user()->can('unit.create')) {
                             $sub->url(
                                 action('UnitController@index'),
@@ -180,11 +180,11 @@ class AdminSidebarMenu
                             );
                         }
 
-                        $sub->url(
-                            action('WarrantyController@index'),
-                            __('lang_v1.warranties'),
-                            ['icon' => 'fa fas fa-shield-alt', 'active' => request()->segment(1) == 'warranties']
-                        );
+                        // $sub->url(
+                        //     action('WarrantyController@index'),
+                        //     __('lang_v1.warranties'),
+                        //     ['icon' => 'fa fas fa-shield-alt', 'active' => request()->segment(1) == 'warranties']
+                        // );
                     },
                     ['icon' => 'fa fas fa-cubes', 'id' => 'tour_step5']
                 )->order(20);
@@ -209,13 +209,13 @@ class AdminSidebarMenu
                                 ['icon' => 'fa fas fa-plus-circle', 'active' => request()->segment(1) == 'purchases' && request()->segment(2) == 'create']
                             );
                         }
-                        if (auth()->user()->can('purchase.update')) {
-                            $sub->url(
-                                action('PurchaseReturnController@index'),
-                                __('lang_v1.list_purchase_return'),
-                                ['icon' => 'fa fas fa-undo', 'active' => request()->segment(1) == 'purchase-return']
-                            );
-                        }
+                    //     if (auth()->user()->can('purchase.update')) {
+                    //         $sub->url(
+                    //             action('PurchaseReturnController@index'),
+                    //             __('lang_v1.list_purchase_return'),
+                    //             ['icon' => 'fa fas fa-undo', 'active' => request()->segment(1) == 'purchase-return']
+                    //         );
+                    //     }
                     },
                     ['icon' => 'fa fas fa-arrow-circle-down', 'id' => 'tour_step6']
                 )->order(25);
@@ -284,21 +284,21 @@ class AdminSidebarMenu
                             );
                         }
 
-                        if (auth()->user()->can('access_sell_return')) {
-                            $sub->url(
-                                action('SellReturnController@index'),
-                                __('lang_v1.list_sell_return'),
-                                ['icon' => 'fa fas fa-undo', 'active' => request()->segment(1) == 'sell-return' && request()->segment(2) == null]
-                            );
-                        }
+                        // if (auth()->user()->can('access_sell_return')) {
+                        //     $sub->url(
+                        //         action('SellReturnController@index'),
+                        //         __('lang_v1.list_sell_return'),
+                        //         ['icon' => 'fa fas fa-undo', 'active' => request()->segment(1) == 'sell-return' && request()->segment(2) == null]
+                        //     );
+                        // }
 
-                        if ($is_admin || auth()->user()->hasAnyPermission(['access_shipping', 'access_own_shipping', 'access_commission_agent_shipping']) ) {
-                            $sub->url(
-                                action('SellController@shipments'),
-                                __('lang_v1.shipments'),
-                                ['icon' => 'fa fas fa-truck', 'active' => request()->segment(1) == 'shipments']
-                            );
-                        }
+                        // if ($is_admin || auth()->user()->hasAnyPermission(['access_shipping', 'access_own_shipping', 'access_commission_agent_shipping']) ) {
+                        //     $sub->url(
+                        //         action('SellController@shipments'),
+                        //         __('lang_v1.shipments'),
+                        //         ['icon' => 'fa fas fa-truck', 'active' => request()->segment(1) == 'shipments']
+                        //     );
+                        // }
 
                         if (auth()->user()->can('discount.access')) {
                             $sub->url(
@@ -328,77 +328,77 @@ class AdminSidebarMenu
             }
 
             //Stock transfer dropdown
-            if (in_array('stock_transfers', $enabled_modules) && (auth()->user()->can('purchase.view') || auth()->user()->can('purchase.create'))) {
-                $menu->dropdown(
-                    __('lang_v1.stock_transfers'),
-                    function ($sub) {
-                        if (auth()->user()->can('purchase.view')) {
-                            $sub->url(
-                                action('StockTransferController@index'),
-                                __('lang_v1.list_stock_transfers'),
-                                ['icon' => 'fa fas fa-list', 'active' => request()->segment(1) == 'stock-transfers' && request()->segment(2) == null]
-                            );
-                        }
-                        if (auth()->user()->can('purchase.create')) {
-                            $sub->url(
-                                action('StockTransferController@create'),
-                                __('lang_v1.add_stock_transfer'),
-                                ['icon' => 'fa fas fa-plus-circle', 'active' => request()->segment(1) == 'stock-transfers' && request()->segment(2) == 'create']
-                            );
-                        }
-                    },
-                    ['icon' => 'fa fas fa-truck']
-                )->order(35);
-            }
+            // if (in_array('stock_transfers', $enabled_modules) && (auth()->user()->can('purchase.view') || auth()->user()->can('purchase.create'))) {
+            //     $menu->dropdown(
+            //         __('lang_v1.stock_transfers'),
+            //         function ($sub) {
+            //             if (auth()->user()->can('purchase.view')) {
+            //                 $sub->url(
+            //                     action('StockTransferController@index'),
+            //                     __('lang_v1.list_stock_transfers'),
+            //                     ['icon' => 'fa fas fa-list', 'active' => request()->segment(1) == 'stock-transfers' && request()->segment(2) == null]
+            //                 );
+            //             }
+            //             if (auth()->user()->can('purchase.create')) {
+            //                 $sub->url(
+            //                     action('StockTransferController@create'),
+            //                     __('lang_v1.add_stock_transfer'),
+            //                     ['icon' => 'fa fas fa-plus-circle', 'active' => request()->segment(1) == 'stock-transfers' && request()->segment(2) == 'create']
+            //                 );
+            //             }
+            //         },
+            //         ['icon' => 'fa fas fa-truck']
+            //     )->order(35);
+            // }
 
             //stock adjustment dropdown
-            if (in_array('stock_adjustment', $enabled_modules) && (auth()->user()->can('purchase.view') || auth()->user()->can('purchase.create'))) {
-                $menu->dropdown(
-                    __('stock_adjustment.stock_adjustment'),
-                    function ($sub) {
-                        if (auth()->user()->can('purchase.view')) {
-                            $sub->url(
-                                action('StockAdjustmentController@index'),
-                                __('stock_adjustment.list'),
-                                ['icon' => 'fa fas fa-list', 'active' => request()->segment(1) == 'stock-adjustments' && request()->segment(2) == null]
-                            );
-                        }
-                        if (auth()->user()->can('purchase.create')) {
-                            $sub->url(
-                                action('StockAdjustmentController@create'),
-                                __('stock_adjustment.add'),
-                                ['icon' => 'fa fas fa-plus-circle', 'active' => request()->segment(1) == 'stock-adjustments' && request()->segment(2) == 'create']
-                            );
-                        }
-                    },
-                    ['icon' => 'fa fas fa-database']
-                )->order(40);
-            }
+            // if (in_array('stock_adjustment', $enabled_modules) && (auth()->user()->can('purchase.view') || auth()->user()->can('purchase.create'))) {
+            //     $menu->dropdown(
+            //         __('stock_adjustment.stock_adjustment'),
+            //         function ($sub) {
+            //             if (auth()->user()->can('purchase.view')) {
+            //                 $sub->url(
+            //                     action('StockAdjustmentController@index'),
+            //                     __('stock_adjustment.list'),
+            //                     ['icon' => 'fa fas fa-list', 'active' => request()->segment(1) == 'stock-adjustments' && request()->segment(2) == null]
+            //                 );
+            //             }
+            //             if (auth()->user()->can('purchase.create')) {
+            //                 $sub->url(
+            //                     action('StockAdjustmentController@create'),
+            //                     __('stock_adjustment.add'),
+            //                     ['icon' => 'fa fas fa-plus-circle', 'active' => request()->segment(1) == 'stock-adjustments' && request()->segment(2) == 'create']
+            //                 );
+            //             }
+            //         },
+            //         ['icon' => 'fa fas fa-database']
+            //     )->order(40);
+            // }
 
             //Expense dropdown
-            if (in_array('expenses', $enabled_modules) && (auth()->user()->can('expense.access') || auth()->user()->can('view_own_expense'))) {
-                $menu->dropdown(
-                    __('expense.expenses'),
-                    function ($sub) {
-                        $sub->url(
-                            action('ExpenseController@index'),
-                            __('lang_v1.list_expenses'),
-                            ['icon' => 'fa fas fa-list', 'active' => request()->segment(1) == 'expenses' && request()->segment(2) == null]
-                        );
-                        $sub->url(
-                            action('ExpenseController@create'),
-                            __('expense.add_expense'),
-                            ['icon' => 'fa fas fa-plus-circle', 'active' => request()->segment(1) == 'expenses' && request()->segment(2) == 'create']
-                        );
-                        $sub->url(
-                            action('ExpenseCategoryController@index'),
-                            __('expense.expense_categories'),
-                            ['icon' => 'fa fas fa-circle', 'active' => request()->segment(1) == 'expense-categories']
-                        );
-                    },
-                    ['icon' => 'fa fas fa-minus-circle']
-                )->order(45);
-            }
+            // if (in_array('expenses', $enabled_modules) && (auth()->user()->can('expense.access') || auth()->user()->can('view_own_expense'))) {
+            //     $menu->dropdown(
+            //         __('expense.expenses'),
+            //         function ($sub) {
+            //             $sub->url(
+            //                 action('ExpenseController@index'),
+            //                 __('lang_v1.list_expenses'),
+            //                 ['icon' => 'fa fas fa-list', 'active' => request()->segment(1) == 'expenses' && request()->segment(2) == null]
+            //             );
+            //             $sub->url(
+            //                 action('ExpenseController@create'),
+            //                 __('expense.add_expense'),
+            //                 ['icon' => 'fa fas fa-plus-circle', 'active' => request()->segment(1) == 'expenses' && request()->segment(2) == 'create']
+            //             );
+            //             $sub->url(
+            //                 action('ExpenseCategoryController@index'),
+            //                 __('expense.expense_categories'),
+            //                 ['icon' => 'fa fas fa-circle', 'active' => request()->segment(1) == 'expense-categories']
+            //             );
+            //         },
+            //         ['icon' => 'fa fas fa-minus-circle']
+            //     )->order(45);
+            // }
             //Accounts dropdown
             if (auth()->user()->can('account.access') && in_array('account', $enabled_modules)) {
                 $menu->dropdown(
@@ -626,9 +626,9 @@ class AdminSidebarMenu
             }
 
             //Notification template menu
-            if (auth()->user()->can('send_notifications')) {
-                $menu->url(action('NotificationTemplateController@index'), __('lang_v1.notification_templates'), ['icon' => 'fa fas fa-envelope', 'active' => request()->segment(1) == 'notification-templates'])->order(80);
-            }
+            // if (auth()->user()->can('send_notifications')) {
+            //     $menu->url(action('NotificationTemplateController@index'), __('lang_v1.notification_templates'), ['icon' => 'fa fas fa-envelope', 'active' => request()->segment(1) == 'notification-templates'])->order(80);
+            // }
 
             //Settings Dropdown
             if (auth()->user()->can('business_settings.access') ||
