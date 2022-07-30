@@ -132,18 +132,18 @@ class AdminSidebarMenu
                         //         ['icon' => 'fa fas fa-barcode', 'active' => request()->segment(1) == 'labels' && request()->segment(2) == 'show']
                         //     );
                         // }
-                        // if (auth()->user()->can('product.create')) {
-                        //     $sub->url(
-                        //         action('VariationTemplateController@index'),
-                        //         __('product.variations'),
-                        //         ['icon' => 'fa fas fa-circle', 'active' => request()->segment(1) == 'variation-templates']
-                        //     );
-                        //     $sub->url(
-                        //         action('ImportProductsController@index'),
-                        //         __('product.import_products'),
-                        //         ['icon' => 'fa fas fa-download', 'active' => request()->segment(1) == 'import-products']
-                        //     );
-                        // }
+                        if (auth()->user()->can('product.create')) {
+                            // $sub->url(
+                            //     action('VariationTemplateController@index'),
+                            //     __('product.variations'),
+                            //     ['icon' => 'fa fas fa-circle', 'active' => request()->segment(1) == 'variation-templates']
+                            // );
+                            $sub->url(
+                                action('ImportProductsController@index'),
+                                __('product.import_products'),
+                                ['icon' => 'fa fas fa-download', 'active' => request()->segment(1) == 'import-products']
+                            );
+                        }
                         if (auth()->user()->can('product.opening_stock')) {
                             $sub->url(
                                 action('ImportOpeningStockController@index'),
