@@ -60,48 +60,48 @@ class AdminSidebarMenu
             }
 
             //Contacts dropdown
-            // if (auth()->user()->can('supplier.view') || auth()->user()->can('customer.view')) {
-            //     $menu->dropdown(
-            //         __('contact.contacts'),
-            //         function ($sub) {
-            //             if (auth()->user()->can('supplier.view')) {
-            //                 $sub->url(
-            //                     action('ContactController@index', ['type' => 'supplier']),
-            //                     __('report.supplier'),
-            //                     ['icon' => 'fa fas fa-star', 'active' => request()->input('type') == 'supplier']
-            //                 );
-            //             }
-            //             if (auth()->user()->can('customer.view')) {
-            //                 $sub->url(
-            //                     action('ContactController@index', ['type' => 'customer']),
-            //                     __('report.customer'),
-            //                     ['icon' => 'fa fas fa-star', 'active' => request()->input('type') == 'customer']
-            //                 );
-            //                 $sub->url(
-            //                     action('CustomerGroupController@index'),
-            //                     __('lang_v1.customer_groups'),
-            //                     ['icon' => 'fa fas fa-users', 'active' => request()->segment(1) == 'customer-group']
-            //                 );
-            //             }
-            //             if (auth()->user()->can('supplier.create') || auth()->user()->can('customer.create')) {
-            //                 $sub->url(
-            //                     action('ContactController@getImportContacts'),
-            //                     __('lang_v1.import_contacts'),
-            //                     ['icon' => 'fa fas fa-download', 'active' => request()->segment(1) == 'contacts' && request()->segment(2) == 'import']
-            //                 );
-            //             }
+            if (auth()->user()->can('supplier.view') || auth()->user()->can('customer.view')) {
+                $menu->dropdown(
+                    __('contact.contacts'),
+                    function ($sub) {
+                        if (auth()->user()->can('supplier.view')) {
+                            $sub->url(
+                                action('ContactController@index', ['type' => 'supplier']),
+                                __('report.supplier'),
+                                ['icon' => 'fa fas fa-star', 'active' => request()->input('type') == 'supplier']
+                            );
+                        }
+                        if (auth()->user()->can('customer.view')) {
+                            $sub->url(
+                                action('ContactController@index', ['type' => 'customer']),
+                                __('report.customer'),
+                                ['icon' => 'fa fas fa-star', 'active' => request()->input('type') == 'customer']
+                            );
+                            $sub->url(
+                                action('CustomerGroupController@index'),
+                                __('lang_v1.customer_groups'),
+                                ['icon' => 'fa fas fa-users', 'active' => request()->segment(1) == 'customer-group']
+                            );
+                        }
+                        if (auth()->user()->can('supplier.create') || auth()->user()->can('customer.create')) {
+                            $sub->url(
+                                action('ContactController@getImportContacts'),
+                                __('lang_v1.import_contacts'),
+                                ['icon' => 'fa fas fa-download', 'active' => request()->segment(1) == 'contacts' && request()->segment(2) == 'import']
+                            );
+                        }
 
-            //             if(!empty(env('GOOGLE_MAP_API_KEY'))) {
-            //                 $sub->url(
-            //                     action('ContactController@contactMap'),
-            //                     __('lang_v1.map'),
-            //                     ['icon' => 'fa fas fa-map-marker-alt', 'active' => request()->segment(1) == 'contacts' && request()->segment(2) == 'map']
-            //                 );
-            //             }
-            //         },
-            //         ['icon' => 'fa fas fa-address-book', 'id' => "tour_step4"]
-            //     )->order(15);
-            // }
+                        if(!empty(env('GOOGLE_MAP_API_KEY'))) {
+                            $sub->url(
+                                action('ContactController@contactMap'),
+                                __('lang_v1.map'),
+                                ['icon' => 'fa fas fa-map-marker-alt', 'active' => request()->segment(1) == 'contacts' && request()->segment(2) == 'map']
+                            );
+                        }
+                    },
+                    ['icon' => 'fa fas fa-address-book', 'id' => "tour_step4"]
+                )->order(15);
+            }
 
             //Products dropdown
             if (auth()->user()->can('product.view') || auth()->user()->can('product.create') ||
