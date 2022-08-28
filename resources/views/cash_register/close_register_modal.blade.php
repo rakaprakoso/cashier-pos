@@ -252,6 +252,11 @@
       </div>
     </div>
     <div class="modal-footer">
+      <button type="button" class="btn btn-primary no-print" 
+	        aria-label="Print" 
+	          onclick="$(this).closest('div.modal-content').printThis();">
+	        <i class="fa fa-print"></i> @lang( 'messages.print' )
+	    </button>
       <button type="button" class="btn btn-default" data-dismiss="modal">@lang( 'messages.cancel' )</button>
       <button type="submit" class="btn btn-primary">@lang( 'cash_register.close_register' )</button>
     </div>

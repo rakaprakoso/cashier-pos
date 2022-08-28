@@ -842,6 +842,23 @@ class ProductController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
+        $business_id = request()->session()->get('user.business_id');
+        $variation = Variation::where('product_id', $id)
+        ->first();
+        $product = Product::where('id', $id)
+        ->where('business_id', $business_id)
+        ->with('variations')
+        ->first();
+        
+        $variation_location = VariationLocationDetails::where('product_id', $id)
+        ->where('variation_id', $variation->id)
+        ->first();
+
+        $variation_location->delete();
+        $variation->delete();
+        $product->delete();
+        return ['response'=>true];
+
         if (request()->ajax()) {
             try {
                 $business_id = request()->session()->get('user.business_id');

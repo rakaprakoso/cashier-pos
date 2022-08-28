@@ -189,12 +189,15 @@ function update_table_total() {
 }
 
 function update_table_row(tr) {
-    var quantity = parseFloat(__read_number(tr.find('input.product_quantity')));
+    var total_stock = parseFloat(__read_number(tr.find('input.product_result_const'))); 
+    var quantity = parseFloat(__read_number(tr.find('input.product_quantity'))); 
     var unit_price = parseFloat(__read_number(tr.find('input.product_unit_price')));
     var row_total = 0;
     if (quantity && unit_price) {
         row_total = quantity * unit_price;
     }
+    tr.find('input.product_result_total').val(__number_f(total_stock-quantity));
+    // tr.find('input.product_line_total').val("YODI GOBLOK");
     tr.find('input.product_line_total').val(__number_f(row_total));
     update_table_total();
 }

@@ -35,7 +35,7 @@
                 'placeholder' => __('product.sku'), 'required', 'readonly']); !!}
               </div>
             </div>
-
+              
             <div class="col-sm-4">
               <div class="form-group">
                 {!! Form::label('barcode_type', __('product.barcode_type') . ':*') !!}

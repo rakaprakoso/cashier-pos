@@ -71,6 +71,10 @@
     <td>
         <input type="text" readonly name="products[{{$row_index}}][price]" class="form-control product_line_total" value="{{@num_format($product->quantity_ordered*$product->last_purchased_price)}}">
     </td>
+    <td>
+        <input type="hidden" readonly class="product_result_const" value="{{@num_format($product->qty_available)}}">
+        <input type="text" readonly class="form-control product_result_total" value="{{@num_format($product->qty_available)}}">
+    </td>
     <td class="text-center">
         <i class="fa fa-trash remove_product_row cursor-pointer" aria-hidden="true"></i>
     </td>

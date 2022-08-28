@@ -345,6 +345,33 @@
                 }    
             })
 
+            $(document).on('click', '.delete-product', function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: e.target.getAttribute('href'),
+                    data: {
+                        _token:'{{csrf_token()}}',
+                        _method:'delete',
+                    },
+                    success: function (data) {
+                        console.log('Submission was successful.');
+                        console.log(data);
+                        location.reload();
+                    },
+                    error: function (data) {
+                        console.log('An error occurred.');
+                        console.log(data);
+                    },
+                });
+
+                // const formData = new FormData();
+                // formData.append('_token', '{{@csrf_token}}');
+                // formData.append('_method', 'destroy');
+                // formData.submit();
+                
+            })
+
             $(document).on('click', '#edit-selected', function(e){
                 e.preventDefault();
                 var selected_rows = getSelectedRows();

@@ -86,6 +86,9 @@
 								<th class="col-sm-3 text-center">
 									@lang('sale.subtotal')
 								</th>
+								<th class="col-sm-3 text-center">
+									Jumlah Akhir Stok
+								</th>
 								<th class="col-sm-2 text-center"><i class="fa fa-trash" aria-hidden="true"></i></th>
 							</tr>
 						</thead>

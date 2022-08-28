@@ -69,5 +69,6 @@ return [
     'edit_sale' => 'Edit Penjualan',
     'shipping' => 'Pengiriman',
     'shipping_details' => 'Rincian Pengiriman',
-    'shipping_charges' => 'Ongkos Kirim'
+    'shipping_charges' => 'Ongkos Kirim',
+    'pos_session' => 'Sesi POS'
 ];
