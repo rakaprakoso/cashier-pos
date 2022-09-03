@@ -221,7 +221,7 @@
     <div class="modal-footer">
       <button type="button" class="btn btn-primary no-print" 
         aria-label="Print" 
-          onclick="$(this).closest('div.modal').printThis();">
+          onclick="$(this).closest('div.modal-body').printThis();">
         <i class="fa fa-print"></i> @lang( 'messages.print' )
       </button>
 
