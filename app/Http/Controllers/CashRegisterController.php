@@ -380,7 +380,7 @@ class CashRegisterController extends Controller
                 return redirect()->action('HomeController@index')->with('status', $output);
             }
             
-            $input = $request->only(['  ', 'total_card_slips', 'total_cheques',
+            $input = $request->only(['closing_amount', 'total_card_slips', 'total_cheques',
                                     'closing_note']);
             $input['closing_amount'] = $this->cashRegisterUtil->num_uf($input['closing_amount']);
             $user_id = $request->input('user_id');
